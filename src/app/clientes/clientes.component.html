@@ -3,6 +3,10 @@
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de Clientes</h5>
     
+<div class="my-3 text-left">
+  <button class="btn btn-rounded btn-primary" type="button" routerLink="/clientes/form"> Crear Cliente</button>
+</div>
+
 <table class="table table-bordered table-striped"> 
   <thead>
 <tr>
@@ -11,6 +15,9 @@
   <th>Apellido</th>
   <th>Emai</th>
   <th>Fecha</th>
+  <th>
+    Editar
+  </th>
 </tr>
 </thead>
 <tbody>
@@ -19,7 +26,10 @@
     <td> {{cliente.nombre}} </td>
     <td> {{cliente.apellido}} </td>
     <td> {{cliente.email}} </td>
-    <td> {{cliente.createAT}} </td>
+    <td> {{cliente.create_at}} </td>
+    <td>
+      <button type="button" name="button" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary">Editar</button>
+    </td>
   </tr>
 </tbody>
 </table>
