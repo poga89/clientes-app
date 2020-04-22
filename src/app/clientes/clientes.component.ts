@@ -33,8 +33,8 @@ export class ClientesComponent implements OnInit {
       text: `Seguro de Eliminar al cliente! ${cliente.nombre} ${cliente.apellido} ?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
       confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
       if (result.value) {

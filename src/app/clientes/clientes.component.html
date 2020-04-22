@@ -6,8 +6,10 @@
 <div class="my-3 text-left">
   <button class="btn btn-rounded btn-primary" type="button" routerLink="/clientes/form"> Crear Cliente</button>
 </div>
-
-<table class="table table-bordered table-striped"> 
+<div class="alert alert-info" *ngIf="cli?.length==0">
+ <label>No hay Registro en la Base de datos! </label>
+</div>
+<table class="table table-bordered table-striped" *ngIf="cli?.length>0"> 
   <thead>
 <tr>
   <th>Id</th>
