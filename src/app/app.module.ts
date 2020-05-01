@@ -1,5 +1,6 @@
 import { ClientesService } from './clientes/clientes.service';
 import { HeaderComponent } from './header/header.component';
+import { PaginadorComponent } from './paginador/paginador.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
@@ -11,11 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 
+
 const routes: Routes= [
 
   {path: '',redirectTo: '/directivas', pathMatch: 'full'},
   {path: 'directivas', component: DirectivaComponent},
   {path: 'clientes', component: ClientesComponent},
+  {path: 'clientes/page/:page', component: ClientesComponent},
   {path: 'clientes/form', component: FormComponent},
   {path: 'clientes/form/:id', component: FormComponent}
 
@@ -29,7 +32,8 @@ const routes: Routes= [
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PaginadorComponent
   ],
   imports: [
     BrowserModule,

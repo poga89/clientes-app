@@ -1,8 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ClientesService } from './clientes.service';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import {CLIENT} from './clientes.json';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,17 +15,34 @@ import Swal from 'sweetalert2';
 export class ClientesComponent implements OnInit {
 
   cli: Cliente[];
+  paginador: any;
 
 
-  constructor(private clientesService: ClientesService) { }
+  constructor(private clientesService: ClientesService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    let page=0;
-    this.clientesService.getClientes(page).subscribe(
-      cli => {
-        this.cli=cli.content as Cliente[];
+    /**
+     * paginador en el front cada ves que se cambie el valor de la pagina este lo actualiza.
+     */
+
+    this.activatedRoute.paramMap.subscribe(
+      params=> {
+      let page: number = +params.get('page');
+      if(!page){
+        page=0;
+      }  
+
+      this.clientesService.getClientes(page).subscribe(
+          response => {
+            this.cli=response.content as Cliente[];
+            this.paginador=response;
+          }
+        )
+
       }
-    );
+    )
+    
   }
 
   delete(cliente: Cliente): void{
