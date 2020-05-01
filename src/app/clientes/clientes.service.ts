@@ -20,9 +20,16 @@ export class ClientesService {
 
   constructor(private http: HttpClient, private route: Router) { }
 
-  getClientes(): Observable<Cliente[]> {
+  getClientes(page: number): Observable<any> {
 
-    return this.http.get<Cliente[]>(this.endpoint);
+    return this.http.get(this.endpoint+'/page/'+ page).pipe(
+      map(
+        (res: any)=>{
+          res.content as Cliente[];
+          return res;
+        }
+      )
+    )
 
   };
 
