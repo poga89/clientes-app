@@ -3,5 +3,6 @@ id: number;
 nombre: string;
 apellido: string;
 createAT: string;
-email: string;    
+email: string; 
+foto: string;   
 }

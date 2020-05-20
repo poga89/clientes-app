@@ -27,7 +27,7 @@
 </thead>
 <tbody>
   <tr *ngFor="let cliente of cli">
-    <td> {{cliente.id}} </td>
+    <td> <button type="button" [routerLink]="['/clientes/ver', cliente.id]" class="btn btn-success"> {{cliente.id}} </button>  {{cliente.id}} </td>
     <td> {{cliente.nombre}} </td>
     <td> {{cliente.apellido}} </td>
     <td> {{cliente.email}} </td>
