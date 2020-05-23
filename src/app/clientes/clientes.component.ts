@@ -46,6 +46,15 @@ export class ClientesComponent implements OnInit {
       }
     )
     
+    this.modalservice.notificarUpload.subscribe(cliente=>{
+      this.cli = this.cli.map(clienteoriginal => {
+        if(cliente.id== clienteoriginal.id){
+          clienteoriginal.foto=cliente.foto;
+        }
+        return clienteoriginal;
+      })
+    });
+
   }
 
   delete(cliente: Cliente): void{

@@ -49,6 +49,7 @@ export class DetalleComponent implements OnInit {
           }else if(event.type === HttpEventType.Response){
             let response: any = event.body;
             this.cliente= response.cliente as Cliente;
+            this.modalservice.notificarUpload.emit(this.cliente);
             Swal.fire('Archivo adjunto con exito','Exito', "success");
           }
 

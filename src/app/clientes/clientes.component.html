@@ -29,14 +29,23 @@
 </thead>
 <tbody>
   <tr *ngFor="let cliente of cli">
-    <!-- [routerLink]="['/clientes/ver', cliente.id]" -->
-    <td> <button type="button" (click)="abrirModal(cliente)"  class="btn btn-success"> {{cliente.id}} </button>  {{cliente.id}} </td>
+    <!-- [routerLink]="['/clientes/ver', cliente.id]" {{cliente.id}}  -->
+    <td>
+      <img (click)="abrirModal(cliente)" 
+      *ngIf="cliente?.foto" 
+      src="http://localhost:8080/api/clientes/img/{{cliente.foto}}" alt="{{cliente.id}} " style="width: 64px; cursor: pointer;">
+    
+      <img (click)="abrirModal(cliente)" 
+      *ngIf="!cliente?.foto" 
+      src="http://localhost:8080/images/no_user.png" alt="Sin foto" style="width: 64px; cursor: pointer;">
+    
+    </td>
     <td> {{cliente.nombre}} </td>
     <td> {{cliente.apellido}} </td>
     <td> {{cliente.email}} </td>
     <td> {{cliente.create_at}} </td>
     <td>
-      <button type="button" name="Editar" class="btn btn-primary">Editar</button>
+      <button type="button" [routerLink]="['/clientes/form', cliente.id]" name="Editar" class="btn btn-primary">Editar</button>
       <!--  [routerLink]="['/clientes/form', cliente.id]" -->
 
     </td>
