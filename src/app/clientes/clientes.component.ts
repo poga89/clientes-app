@@ -4,6 +4,7 @@ import { ClientesService } from './clientes.service';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import {CLIENT} from './clientes.json';
+import {ModalService} from './detalle/modal.service';
 
 import Swal from 'sweetalert2';
 
@@ -16,10 +17,12 @@ export class ClientesComponent implements OnInit {
 
   cli: Cliente[];
   paginador: any;
+  clienteSeleccionado:Cliente;
 
 
   constructor(private clientesService: ClientesService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private modalservice: ModalService) { }
 
   ngOnInit() {
     /**
@@ -73,6 +76,12 @@ export class ClientesComponent implements OnInit {
 
    
 
+  }
+
+
+  abrirModal(cliente: Cliente){
+    this.clienteSeleccionado = cliente;
+    this.modalservice.abrirModal();
   }
 
 }
