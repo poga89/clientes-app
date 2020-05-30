@@ -6,6 +6,7 @@ import { Observable,of, throwError} from 'rxjs';
 import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import {map, catchError} from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { Region } from './region';
 
 
 
@@ -19,6 +20,11 @@ export class ClientesService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient, private route: Router) { }
+
+  getRegiones(): Observable<Region[]> {
+
+    return this.http.get<Region[]>(this.endpoint+'/regiones');
+  }
 
   getClientes(page: number): Observable<any> {
 

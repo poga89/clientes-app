@@ -1,8 +1,10 @@
+import { Observable } from 'rxjs';
 import { Routes, Router, ActivatedRoute } from '@angular/router';
 import { ClientesService } from './clientes.service';
 import { Cliente } from './cliente';
 import { Component, OnInit, NgModule } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Region } from './region';
 
 @Component({
   selector: 'app-form',
@@ -12,6 +14,7 @@ import Swal from 'sweetalert2';
 export class FormComponent implements OnInit {
 
   private cliente: Cliente = new Cliente();
+  regiones: Region[];
   private errores: string[];
   private titulo: string = "Crear Cliente";
   constructor(private clientesService: ClientesService,
@@ -31,6 +34,16 @@ export class FormComponent implements OnInit {
         }
       }
     );
+
+    this.clientesService.getRegiones().subscribe(regiones=> this.regiones= regiones);
+
+  }
+
+  compararRegion(o1: Region, o2: Region): boolean {
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1 === null || o2 === null || o1 === undefined || o2 === undefined? false: o1.id === o2.id;
   }
 
   public create(): void{
