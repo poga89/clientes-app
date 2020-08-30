@@ -1,4 +1,4 @@
-export class Region{
-id: number;
-nombre: string;
+export class Region {
+  id: number;
+  nombre: string;
 }

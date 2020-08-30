@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-footer',
-    templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.css']
+selector: 'app-footer',
+templateUrl: './footer.component.html',
+styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-
- public autor: any = {nombre:'braider', apellido:'polo'};
-
- nombre: string='Braider';
-
+  public autor: any = {nombre:'Braider', apellido: 'Polo'};
 }
