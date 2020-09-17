@@ -19,4 +19,9 @@ export class FacturasService {
     return this.httpClient.get<Factura>(this.urlEndPoint+"/"+id);    
   }
 
+  delete(id: number): Observable<void>{
+
+    return this.httpClient.delete<void>(this.urlEndPoint+"/"+id);    
+  }
+
 }
